@@ -32,6 +32,7 @@ namespace aula_142_CreatingCustomExceptions.Entities
                 + CheckIn.ToString("dd/MM/yyyy")
                 + ", check-out: "
                 + CheckOut.ToString("dd/MM/yyyy")
+                + ", "
                 + Duration()
                 + " nights";
         }
