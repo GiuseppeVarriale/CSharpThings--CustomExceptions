@@ -24,9 +24,9 @@ namespace aula_142_CreatingCustomExceptions
                 
                 Console.WriteLine();
                 Console.WriteLine("Enter data to update the reservaion:");
-                Console.Write("Check-in date (dd//MM/yyyy): ");
+                Console.Write("Check-in date (dd/MM/yyyy): ");
                 checkInDate = DateTime.Parse(Console.ReadLine());
-                Console.Write("Check-ou date (dd//MM/yyyy): ");
+                Console.Write("Check-ou date (dd/MM/yyyy): ");
                 checkOutDate = DateTime.Parse(Console.ReadLine());
 
                 DateTime now = DateTime.Now;

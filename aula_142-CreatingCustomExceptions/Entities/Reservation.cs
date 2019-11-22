@@ -20,7 +20,7 @@ namespace aula_142_CreatingCustomExceptions.Entities
 
         public int Duration() 
         {
-            TimeSpan duration = CheckIn.Subtract(CheckIn);
+            TimeSpan duration = CheckOut.Subtract(CheckIn);
             return (int)duration.TotalDays;
         }
 
