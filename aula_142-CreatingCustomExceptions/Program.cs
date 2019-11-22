@@ -12,13 +12,8 @@ namespace aula_142_CreatingCustomExceptions
             DateTime checkInDate = DateTime.Parse(Console.ReadLine());
             Console.Write("Check-ou date (dd/MM/yyyy): ");
             DateTime checkOutDate = DateTime.Parse(Console.ReadLine());
-            DateTime now = DateTime.Now;
-            if (checkInDate < now || checkOutDate < now)
-            {
-                Console.WriteLine();
-                Console.WriteLine("Error in reservation: Reservation dates for update must be future dates");
-            }
-            else if (checkOutDate <= checkInDate)
+
+            if (checkOutDate <= checkInDate)
             {
                 Console.WriteLine();
                 Console.WriteLine("Error in reservation: Check-out date must be after check-in date");
@@ -27,7 +22,7 @@ namespace aula_142_CreatingCustomExceptions
             {
                 Reservation reservation = new Reservation(roomNumber, checkInDate, checkOutDate);
                 Console.WriteLine("Reservation: " + reservation);
-                
+
                 Console.WriteLine();
                 Console.WriteLine("Enter data to update the reservaion:");
                 Console.Write("Check-in date (dd/MM/yyyy): ");
@@ -35,25 +30,18 @@ namespace aula_142_CreatingCustomExceptions
                 Console.Write("Check-ou date (dd/MM/yyyy): ");
                 checkOutDate = DateTime.Parse(Console.ReadLine());
 
-                now = DateTime.Now;
-                if (checkInDate < now || checkOutDate < now)
+                string error = reservation.UpdateDates(checkInDate, checkOutDate);
+
+                if (error != null)
                 {
-                    Console.WriteLine();
-                    Console.WriteLine("Error in reservation: Reservation dates for update must be future dates"); 
-                }
-                else if (checkOutDate <= checkInDate)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Error in reservation: Check-out date must be after check-in date");
+                    Console.WriteLine("Error in reservation: " + error);
                 }
                 else
                 {
-                    reservation.UpdateDates(checkInDate, checkOutDate);
                     Console.WriteLine("Reservation: " + reservation);
                 }
-
             }
-
         }
+
     }
 }

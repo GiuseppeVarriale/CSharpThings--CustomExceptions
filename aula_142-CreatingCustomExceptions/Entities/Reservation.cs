@@ -7,8 +7,8 @@ namespace aula_142_CreatingCustomExceptions.Entities
         public DateTime CheckIn { get; private set; }
         public DateTime CheckOut { get; private set; }
 
-        public Reservation() 
-        { 
+        public Reservation()
+        {
         }
 
         public Reservation(int roomNumber, DateTime checkIn, DateTime checkOut)
@@ -18,7 +18,7 @@ namespace aula_142_CreatingCustomExceptions.Entities
             CheckOut = checkOut;
         }
 
-        public int Duration() 
+        public int Duration()
         {
             TimeSpan duration = CheckOut.Subtract(CheckIn);
             return (int)duration.TotalDays;
@@ -37,10 +37,20 @@ namespace aula_142_CreatingCustomExceptions.Entities
                 + " nights";
         }
 
-        public void UpdateDates(DateTime checkIn, DateTime checkOut) 
+        public string UpdateDates(DateTime checkIn, DateTime checkOut)
         {
+            DateTime now = DateTime.Now;
+            if (checkIn < now || checkOut < now)
+            {
+                return "Reservation dates for update must be future dates";
+            }
+            if (checkOut <= checkIn)
+            {
+                return "Check-out date must be after check-in date";
+            }
             CheckIn = checkIn;
             CheckOut = checkOut;
+            return null;
         }
     }
 }
