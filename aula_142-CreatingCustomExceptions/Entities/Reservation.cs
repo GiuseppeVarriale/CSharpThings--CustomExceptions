@@ -36,9 +36,10 @@ namespace aula_142_CreatingCustomExceptions.Entities
                 + " nights";
         }
 
-        public void UpdateDates(DateTime checkin, DateTime checkout) 
+        public void UpdateDates(DateTime checkIn, DateTime checkOut) 
         {
-            Console.WriteLine("not Implemented yet") ;
+            CheckIn = checkIn;
+            CheckOut = checkOut;
         }
     }
 }
