@@ -8,11 +8,17 @@ namespace aula_142_CreatingCustomExceptions
         {
             Console.Write("Room number: ");
             int roomNumber = int.Parse(Console.ReadLine());
-            Console.Write("Check-in date (dd//MM/yyyy): ");
+            Console.Write("Check-in date (dd/MM/yyyy): ");
             DateTime checkInDate = DateTime.Parse(Console.ReadLine());
-            Console.Write("Check-ou date (dd//MM/yyyy): ");
+            Console.Write("Check-ou date (dd/MM/yyyy): ");
             DateTime checkOutDate = DateTime.Parse(Console.ReadLine());
-            if (checkOutDate <= checkInDate)
+            DateTime now = DateTime.Now;
+            if (checkInDate < now || checkOutDate < now)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Error in reservation: Reservation dates for update must be future dates");
+            }
+            else if (checkOutDate <= checkInDate)
             {
                 Console.WriteLine();
                 Console.WriteLine("Error in reservation: Check-out date must be after check-in date");
@@ -29,9 +35,10 @@ namespace aula_142_CreatingCustomExceptions
                 Console.Write("Check-ou date (dd/MM/yyyy): ");
                 checkOutDate = DateTime.Parse(Console.ReadLine());
 
-                DateTime now = DateTime.Now;
+                now = DateTime.Now;
                 if (checkInDate < now || checkOutDate < now)
                 {
+                    Console.WriteLine();
                     Console.WriteLine("Error in reservation: Reservation dates for update must be future dates"); 
                 }
                 else if (checkOutDate <= checkInDate)
@@ -42,6 +49,7 @@ namespace aula_142_CreatingCustomExceptions
                 else
                 {
                     reservation.UpdateDates(checkInDate, checkOutDate);
+                    Console.WriteLine("Reservation: " + reservation);
                 }
 
             }
